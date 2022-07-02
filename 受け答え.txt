@@ -1,0 +1,21 @@
+// モジュールの読み込み
+const Discord = require('discord.js');
+// インスタンスの作成
+const client = new Discord.Client();
+// トークンの設定
+const mySecret = process.env['TOKEN'];
+
+// client（Bot）の準備が出来たらコンソールにメッセージを出力
+client.on('ready', () => {
+  console.log(`${client.user.tag} としてログインしました。`);
+});
+
+// チャンネルに「hello」と書き込まれたら「Hello！」と返す
+client.on('message', message => {
+  if (message.content === 'hello') {
+    message.reply('Hello！');
+  }
+});
+
+// 設定したトークンでDiscordにログイン
+client.login(mySecret);
